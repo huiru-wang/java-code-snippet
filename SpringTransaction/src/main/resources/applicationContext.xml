@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd   http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--=============== Datasource 配置 ==================-->
+
+    <context:component-scan base-package="com.snippet.springtransaction.*"/>
+
+    <bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource">
+        <!-- 配置数据源 -->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl"
+                  value="jdbc:mysql:///test?useUnicode=true&amp;characterEncoding=utf-8&amp;userSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+        <property name="poolName" value="hikari-pool"/>
+        <property name="maximumPoolSize" value="20"/>
+        <property name="idleTimeout" value="20000"/>
+        <property name="connectionTimeout" value="10000"/>
+    </bean>
+
+    <!--=============== Tx 配置 ==================-->
+    <!--
+    1、事务管理器
+    2、事务通知
+    3、开启AOP
+    -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="hikariDataSource"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*" isolation="REPEATABLE_READ" timeout="2000" read-only="true"
+                       rollback-for="java.lang.Exception"/>
+            <tx:method name="insert*"/>
+            <tx:method name="delete*"/>
+            <tx:method name="update*"/>
+            <tx:method name="select*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="txPointcut" expression="execution(* com.snippet.springtransaction.service.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>
+</beans>

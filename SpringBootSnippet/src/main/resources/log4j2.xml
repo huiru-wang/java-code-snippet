@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--log4j参数：
+%d{date_pattern}：时间
+%t：当前线程
+%p、%level：日志级别
+%c{1.}：package精度，1则只输出类名
+%m、%msg：日志具体内容
+%n：换行符
+-->
+<Configuration>
+    <!--========================声明变量========================-->
+    <Properties>
+        <property name="APP_NAME">springApplication</property>
+        <!--日志存放路径-->
+        <property name="LOG_PATH">logs</property>
+        <!--日志备份路径-->
+        <property name="LOG_BACKUP_PATH">${LOG_PATH}/backup</property>
+        <!--日志格式-->
+        <property name="PATTERN">
+            %highlight{%d{yyyy-MM-dd HH:mm:ss.SSS}|%blue{${sys:PID}}|%yellow{%thread}|%cyan{%level}|%msg%n}{ERROR=red,
+            WARN=bg_#5792e6 fg_#eef26b bold, INFO=black, DEBUG=#3fe0a8, TRACE=blue}
+        </property>
+        <property name="FILE_PATTERN">
+            %highlight{%d{yyyy-MM-dd HH:mm:ss.SSS}|${sys:PID}|%thread|%level|%msg%n}{ERROR=red,
+            WARN=bg_#5792e6 fg_#eef26b bold, INFO=black, DEBUG=#3fe0a8, TRACE=blue}
+        </property>
+    </Properties>
+
+    <!--==============定义日志输出目的地、内容和格式等==============-->
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout charset="UTF-8" pattern="${PATTERN}"/>
+        </Console>
+
+        <!-- 同步滚动日志 -->
+        <RollingFile name="ApplicationLog" fileName="${LOG_PATH}/${APP_NAME}.log"
+                     filePattern="${LOG_BACKUP_PATH}/$${date:yyyy-MM}/${APP_NAME}-%d{yyyy-MM-dd}_%i.log.zip"
+                     bufferSize="8192">
+            <!--输出日志的格式, 不设置默认为:%m%n-->
+            <PatternLayout charset="UTF-8" pattern="${FILE_PATTERN}"/>
+            <!--只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--归档设置-->
+            <Policies>
+                <!--按时间间隔归档:
+                    1. interval=时间间隔, 单位由filePattern的%d日期格式指定, 此处配置代表每一天归档一次
+                    2. modulate="true" 是否对interval取模，决定了下一次触发的时间点
+                -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- 按照日志文件的大小: size表示当前日志文件的最大size，支持单位：KB/MB/GB-->
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+            <!-- 历史日志配置: 该属性如不设置，则默认为最多同一文件夹下7个文件开始覆盖-->
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+        <RollingFile name="InterfaceLog" fileName="${LOG_PATH}/interface.log"
+                     filePattern="${LOG_BACKUP_PATH}/$${date:yyyy-MM}/interface-%d{yyyy-MM-dd}_%i.log.zip"
+                     bufferSize="8192">
+            <PatternLayout charset="UTF-8" pattern="${FILE_PATTERN}"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+        <RollingFile name="MybatisLog" fileName="${LOG_PATH}/mybatis.log"
+                     filePattern="${LOG_BACKUP_PATH}/$${date:yyyy-MM}/mybatis-%d{yyyy-MM-dd}_%i.log.zip"
+                     bufferSize="8192">
+            <PatternLayout charset="UTF-8" pattern="${FILE_PATTERN}"/>
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <!--==============指定路径下使用的Appender==============-->
+    <Loggers>
+        <root level="info">
+            <AppenderRef ref="Console"/>
+        </root>
+        <!--接口日志-->
+        <AsyncLogger name="com.snippet.spring.aop.InterfaceLogAspect" level="info" additivity="false">
+            <AppenderRef ref="InterfaceLog"/>
+        </AsyncLogger>
+
+        <!-- 项目日志 additivity: 是否同时输出到 Root 下-->
+        <AsyncLogger name="com.snippet.spring" level="info" additivity="true">
+            <AppenderRef ref="ApplicationLog"/>
+        </AsyncLogger>
+
+        <!--mybatis 日志-->
+        <AsyncLogger name="org.mybatis" level="debug" additivity="false">
+            <AppenderRef ref="MybatisLog"/>
+        </AsyncLogger>
+
+    </Loggers>
+</Configuration>
