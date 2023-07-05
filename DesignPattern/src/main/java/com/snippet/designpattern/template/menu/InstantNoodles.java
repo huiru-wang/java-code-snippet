@@ -12,6 +12,6 @@ public class InstantNoodles extends CookTemplate {
     }
 
     protected void plating() {
-
+        System.out.println("instant noodles is done");
     }
 }

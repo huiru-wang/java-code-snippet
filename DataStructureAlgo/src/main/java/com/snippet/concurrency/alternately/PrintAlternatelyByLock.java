@@ -1,4 +1,4 @@
-package com.snippet.concurrency;
+package com.snippet.concurrency.alternately;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.Condition;
@@ -6,10 +6,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 交替打印AB
+ * 不要使用线程空转的方法，使用阻塞 + 唤醒
  * <p>
  * create by whr on 2023-07-02
  */
-public class PrintAlternatelyTask1 {
+public class PrintAlternatelyByLock {
 
     private static final ReentrantLock LOCK = new ReentrantLock();
 
@@ -19,7 +20,7 @@ public class PrintAlternatelyTask1 {
 
     CountDownLatch latch;
 
-    public PrintAlternatelyTask1(CountDownLatch latch) {
+    public PrintAlternatelyByLock(CountDownLatch latch) {
         this.latch = latch;
     }
 
@@ -43,9 +44,9 @@ public class PrintAlternatelyTask1 {
 
     public static void main(String[] args) throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(2);
-        PrintAlternatelyTask1 printAlternatelyTask = new PrintAlternatelyTask1(latch);
-        new Thread(() -> printAlternatelyTask.printTask("A", 0)).start();
-        new Thread(() -> printAlternatelyTask.printTask("B", 1)).start();
+        PrintAlternatelyByLock task = new PrintAlternatelyByLock(latch);
+        new Thread(() -> task.printTask("A", 0)).start();
+        new Thread(() -> task.printTask("B", 1)).start();
         latch.await();
     }
 }

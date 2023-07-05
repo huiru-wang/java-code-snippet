@@ -1,9 +1,16 @@
 package com.snippet.designpattern.observer;
 
+import com.snippet.designpattern.observer.listeners.GrandPa;
+
 public class App {
 
-    public static void main(String[] args) throws InterruptedException {
-        Weather weather = new Weather(new NotificationCenter());
+    public static void main(String[] args) {
+        Weather weather = new Weather();
+
+        // grandMa SPI订阅
+        // grandPa手动订阅
+        GrandPa grandPa = new GrandPa();
+        weather.addSubscriber(grandPa);
 
         weather.riseUp("35");
 

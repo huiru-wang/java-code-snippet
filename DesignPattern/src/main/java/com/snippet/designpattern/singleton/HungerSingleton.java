@@ -2,6 +2,7 @@ package com.snippet.designpattern.singleton;
 
 /**
  * 依赖于JVM的类加载的线程安全
+ * 非懒加载
  * <p>
  * create by whr on 2023/3/4
  */

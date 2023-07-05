@@ -1,6 +1,7 @@
 package com.snippet.designpattern.strategy.simple;
 
-import com.snippet.designpattern.strategy.combination.PaymentStrategy;
+import com.snippet.designpattern.strategy.Order;
+import com.snippet.designpattern.strategy.PaymentStrategy;
 
 public class ChannelPayment {
 
@@ -10,8 +11,8 @@ public class ChannelPayment {
         this.paymentStrategy = paymentStrategy;
     }
 
-    public void doPayment(){
+    public void doPayment(Order order) {
         System.out.println("Do Payment");
-        this.paymentStrategy.payment();
+        this.paymentStrategy.payment(order);
     }
 }

@@ -5,7 +5,7 @@ package com.snippet.sort;
  */
 public class QuickSort {
 
-    public void sort() {
+    public void sort(int[] nums) {
 
     }
 }
