@@ -1,4 +1,4 @@
-package com.snippet.algo.monotonicstack;
+package com.snippet.algo.monotonicity;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

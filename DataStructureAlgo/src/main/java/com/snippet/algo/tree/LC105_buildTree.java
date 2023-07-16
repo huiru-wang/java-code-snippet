@@ -7,7 +7,6 @@ import java.util.Arrays;
  */
 public class LC105_buildTree {
 
-    // TODO
     public static TreeNode buildTree(int[] preorder, int[] inorder) {
         if (preorder.length == 0) {
             return null;

@@ -1,4 +1,4 @@
-package com.snippet.javacodebase;
+package com.snippet.javacodebase.obj;
 
 import lombok.Data;
 import org.junit.jupiter.api.Test;
@@ -58,5 +58,29 @@ public class ObjectStructure {
         ClassLayout classLayout3 = ClassLayout.parseInstance(orderWithUser);
         String orderUserMemoryInfo = classLayout3.toPrintable();
         System.out.println(orderUserMemoryInfo);
+    }
+
+    @Test
+    public void array_size() {
+        Integer[] arr = new Integer[]{1, 2, 3, 4, 5, 6, 7};
+        ClassLayout classLayout = ClassLayout.parseInstance(arr);
+        String memoryInfo = classLayout.toPrintable();
+        System.out.println(memoryInfo);
+    }
+
+    @Test
+    public void empty_array_size() {
+        Integer[] arr = new Integer[1_000_000_000]; // 3.7G
+        ClassLayout classLayout = ClassLayout.parseInstance(arr);
+        String memoryInfo = classLayout.toPrintable();
+        System.out.println(memoryInfo);
+    }
+
+    @Test
+    public void empty_byte_size() {
+        byte[] arr = new byte[1_000_000_000]; // 0.9G
+        ClassLayout classLayout = ClassLayout.parseInstance(arr);
+        String memoryInfo = classLayout.toPrintable();
+        System.out.println(memoryInfo);
     }
 }

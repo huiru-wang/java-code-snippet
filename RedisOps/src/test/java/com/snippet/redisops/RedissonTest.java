@@ -21,6 +21,7 @@ public class RedissonTest {
     @Test
     public void redisson_rlock_test() {
         RLock lock = redissonClient.getLock("demo_test");
+        redissonClient.getReadWriteLock()
         // 上锁，创建hash key，field为线程唯一ID，value为重入次数
         lock.lock(1, TimeUnit.MINUTES);
         lock.lock(1, TimeUnit.MINUTES); // value++

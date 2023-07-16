@@ -8,10 +8,14 @@ package com.snippet.algo.array;
  */
 public class LC4_findMedianSortedArrays {
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        // 只需要找到两个数组长度的中间位置
         int n = (nums1.length + nums2.length) / 2 + 1;
+        // 新建数组，等待排序后放入
         int[] num = new int[n];
         int i = 0, j = 0;
+        // 归并 放入新数组，直到数量达到n/2
         for (int k = 0; k < n; k++) {
+            // 哪个小取哪个
             if (i < nums1.length && j < nums2.length) {
                 if (nums1[i] <= nums2[j]) {
                     num[k] = nums1[i++];
@@ -67,4 +71,6 @@ public class LC4_findMedianSortedArrays {
     public static void main(String[] args) {
         findMedianSortedArrays(new int[]{1, 2}, new int[]{3, 4});
     }
+
+
 }

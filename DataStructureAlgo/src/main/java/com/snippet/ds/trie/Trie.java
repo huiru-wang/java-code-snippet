@@ -1,4 +1,4 @@
-package com.snippet.ds;
+package com.snippet.ds.trie;
 
 /**
  * create by whr on 2023-05-03
@@ -45,43 +45,5 @@ public class Trie {
         return node;
     }
 
-    public static void main(String[] args) {
-        Trie trie = new Trie();
-        trie.insert("good");
-        trie.insert("synchronized");
-        boolean world = trie.search("world");
-        System.out.println(world);
-        boolean res = trie.search("synchronized");
-        System.out.println(res);
-    }
 }
 
-class TrieNode {
-    private TrieNode[] links;
-    private boolean isEnd;
-
-    public TrieNode() {
-        int r = 26;
-        links = new TrieNode[r];
-    }
-
-    public boolean containsKey(char ch) {
-        return links[ch - 'a'] != null;
-    }
-
-    public TrieNode get(char ch) {
-        return links[ch - 'a'];
-    }
-
-    public void put(char ch, TrieNode node) {
-        links[ch - 'a'] = node;
-    }
-
-    public void setEnd() {
-        isEnd = true;
-    }
-
-    public boolean isEnd() {
-        return isEnd;
-    }
-}
