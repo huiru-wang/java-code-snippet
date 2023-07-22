@@ -1,7 +1,16 @@
 server:
-  port: 8082
+  port: 8080
+spring:
+  application:
+    name: dubbo-client-app
 dubbo:
   application:
-    name: dubbo-client
-  registry:
-    address: zookeeper://127.0.0.1:2181
+    name: ${spring.application.name}
+    qos-port: 20030
+  registries:
+    # 多注册中心
+    nacos:
+      register: true
+      address: nacos://127.0.0.1:8848
+      weight: 10
+
