@@ -1,26 +1,22 @@
-# JavaCodeSnippet
+# code-snippet
+本仓库整理常用组件的代码片段
 
-> 记录日常代码片段,笔记见：[Blog](http://124.223.9.3)
+# demo-basic
+java 基础相关内容
 
-## Spring
-- SpringBootSnippet
-- SpringTransaction
-- MyBatis-Plus
-- SpringKafka
+# demo-design-pattern
+java 设计模式相关
 
-## Dubbo3
+## demo-dubbo
+Springboot-dubbo-nacos
 
+## demo-spring-mvc
+SpringBoot-MVC-MybatisPlus
+- spring配置
+- Filer
+- Interceptor
+- Mybatis
+- 全局异常处理
 
-
-## Cache
-
-- RedisOps
-- LocalCache
-
-## 设计模式
-
-- DesignPattern
-
-## Java
-
-- JavaBaseCode
+## demo-spring-transaction
+Spring事务相关
