@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaohan.demo.spring.mvc.dao.mapper.OrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="resultMap" type="com.xiaohan.demo.spring.mvc.dao.entity.OrderEntity">
+        <id column="id" property="id"/>
+        <result column="order_id" property="orderId" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="amount" property="amount" jdbcType="BIGINT"/>
+        <result column="currency_code" property="currencyCode" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="remarks" property="remarks" jdbcType="VARCHAR"/>
+        <result column="ext" property="ext" jdbcType="VARCHAR"/>
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP"/>
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="base_column">
+        id, order_id, user_id, amount, currency_code, channel, status, remarks, ext, created_at, updated_at
+    </sql>
+
+    <sql id="insert_column">
+        order_id, user_id, amount, currency_code, channel, status, remarks, ext, created_at, updated_at
+    </sql>
+
+    <insert id="insert">
+        INSERT INTO `t_order`
+        (<include refid="insert_column" />)
+        VALUES (
+        #{order.orderId}, #{order.userId}, #{order.amount}, #{order.currencyCode}, #{order.channel}, #{order.status},
+        #{order.remarks}, #{order.ext}, #{order.createdAt},  #{order.updatedAt}
+        );
+    </insert>
+
+    <update id="update">
+        UPDATE `t_order`
+        <set>
+            <if test="order.amount != null">amount = #{order.amount}, </if>
+            <if test="order.currencyCode != null"> currency_code = #{order.currencyCode},</if>
+            <if test="order.status != null"> status = #{order.status},</if>
+            <if test="order.remarks != null"> remarks = #{order.remarks},</if>
+            <if test="order.ext != null"> ext = #{order.ext},</if>
+            updated_at = #{order.updatedAt}
+        </set>
+        WHERE order_id = #{order.orderId}
+    </update>
+
+    <insert id="insertOrUpdate">
+        INSERT INTO `t_order` (
+        <include refid="insert_column" />
+        ) VALUES (
+        #{order.orderId}, #{order.userId}, #{order.amount}, #{order.currencyCode}, #{order.channel}, #{order.status},
+        #{order.remarks}, #{order.ext}, #{order.createdAt}, #{order.updatedAt}
+        ) ON DUPLICATE KEY UPDATE
+        amount = #{order.amount},
+        currencyCode = #{order.currencyCode},
+        channel = #{order.channel},
+        status = #{order.status},
+        remarks = #{order.remarks},
+        ext = #{order.ext},
+        updatedAt = #{order.updatedAt}
+    </insert>
+
+    <select id="selectOneByOrderId" resultMap="resultMap">
+        SELECT <include refid="base_column"/>
+        FROM `t_order`
+        WHERE order_id = #{orderId}
+    </select>
+
+    <select id="selectListByCondition" resultMap="resultMap">
+        SELECT
+        <include refid="base_column"/>
+        FROM t_order
+        WHERE order_id IN
+        <foreach collection="queryParam.orderIdList" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+</mapper>

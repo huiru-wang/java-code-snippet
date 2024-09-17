@@ -1,0 +1,12 @@
+dubbo:
+  application:
+    name: demo-dubbo-provider
+    check-serializable: false
+  protocol:
+    name: dubbo
+    port: 50052
+  provider:
+    serialization: hessian2
+  registry:
+    # 控制台：http://localhost:8848/nacos
+    address: nacos://127.0.0.1:8848

@@ -8,19 +8,14 @@
 - MyBatis-Plus
 - SpringKafka
 
+## Dubbo3
+
+
+
 ## Cache
 
 - RedisOps
 - LocalCache
-
-## HttpClientImpl
-
-- OkHttp3
-- WebClient(Spring5)
-
-## Flink
-
-- FlinkExample
 
 ## 设计模式
 

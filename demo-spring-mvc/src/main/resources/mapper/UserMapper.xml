@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaohan.demo.spring.mvc.dao.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="resultMap" type="com.xiaohan.demo.spring.mvc.dao.entity.UserEntity">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="createdAt" property="createdAt"/>
+        <result column="status" property="status"/>
+        <result column="type" property="type"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="base_column">
+        id, user_id, username, password, phone, email, createdAt, type, status
+    </sql>
+
+    <select id="selectByCondition" resultMap="resultMap">
+        SELECT
+        <include refid="base_column"/>
+        FROM t_user
+        <where>
+            user_id IN
+            <foreach collection="queryParam.userIdList" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+
+            <if test="queryParam.phoneNoList != null and queryParam.phoneNoList.size > 0">
+                AND phone_no IN
+                <foreach collection="queryParam.phoneNoList" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="queryParam.userName != null and queryParam.userName != ''">
+                AND user_name LIKE concat('%', #{queryParam.userName}, '%')
+            </if>
+        </where>
+    </select>
+
+</mapper>

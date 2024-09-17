@@ -1,0 +1,19 @@
+server:
+  port: 9090
+
+spring:
+  # =============DataSource=============
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql:///demo_spring_transaction?useUnicode=true&characterEncoding=utf-8&userSSL=false
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 20
+      pool-name: demo-spring-transaction
+      connection-timeout: 10000
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
