@@ -1,7 +1,8 @@
 package com.xiaohan.demo.design.pattern.chain.handlers;
 
-import com.snippet.designpattern.chain.Message;
-import com.snippet.designpattern.chain.MessageHandler;
+
+import com.xiaohan.demo.design.pattern.chain.Message;
+import com.xiaohan.demo.design.pattern.chain.MessageHandler;
 
 /**
  * create by whr on 2023-07-05

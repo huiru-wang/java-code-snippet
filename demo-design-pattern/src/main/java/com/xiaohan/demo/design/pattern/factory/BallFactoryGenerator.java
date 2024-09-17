@@ -1,7 +1,8 @@
 package com.xiaohan.demo.design.pattern.factory;
 
-import com.snippet.designpattern.factorymehtod.factories.BasketFactory;
-import com.snippet.designpattern.factorymehtod.factories.FootFactory;
+
+import com.xiaohan.demo.design.pattern.factory.factories.BasketFactory;
+import com.xiaohan.demo.design.pattern.factory.factories.FootFactory;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,8 @@
 package com.xiaohan.demo.design.pattern.simplefactory;
 
-import com.snippet.designpattern.simplefactory.clothes.Coat;
-import com.snippet.designpattern.simplefactory.clothes.Jeans;
+
+import com.xiaohan.demo.design.pattern.simplefactory.clothes.Coat;
+import com.xiaohan.demo.design.pattern.simplefactory.clothes.Jeans;
 
 import java.util.HashMap;
 import java.util.Map;

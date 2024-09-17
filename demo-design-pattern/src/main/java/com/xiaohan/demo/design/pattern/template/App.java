@@ -1,7 +1,8 @@
 package com.xiaohan.demo.design.pattern.template;
 
-import com.snippet.designpattern.template.menu.InstantNoodles;
-import com.snippet.designpattern.template.menu.KungPaoChicken;
+
+import com.xiaohan.demo.design.pattern.template.menu.InstantNoodles;
+import com.xiaohan.demo.design.pattern.template.menu.KungPaoChicken;
 
 public class App {
 

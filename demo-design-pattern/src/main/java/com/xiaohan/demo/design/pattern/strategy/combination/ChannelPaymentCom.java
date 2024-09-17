@@ -1,8 +1,9 @@
 package com.xiaohan.demo.design.pattern.strategy.combination;
 
-import com.snippet.designpattern.strategy.Order;
-import com.snippet.designpattern.strategy.PaymentStrategy;
-import com.snippet.designpattern.strategy.combination.concrete.AdyenPayment;
+
+import com.xiaohan.demo.design.pattern.strategy.Order;
+import com.xiaohan.demo.design.pattern.strategy.PaymentStrategy;
+import com.xiaohan.demo.design.pattern.strategy.simple.concrete.AdyenPayment;
 
 import java.util.HashMap;
 import java.util.Map;

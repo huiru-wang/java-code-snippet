@@ -1,6 +1,7 @@
 package com.xiaohan.demo.design.pattern.simplefactory.clothes;
 
-import com.snippet.designpattern.simplefactory.Clothes;
+
+import com.xiaohan.demo.design.pattern.simplefactory.Clothes;
 
 /**
  * create by whr on 2023-07-05

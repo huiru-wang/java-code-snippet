@@ -1,5 +1,6 @@
 package com.xiaohan.demo.design.pattern.strategy;
 
+
 import lombok.Data;
 
 /**

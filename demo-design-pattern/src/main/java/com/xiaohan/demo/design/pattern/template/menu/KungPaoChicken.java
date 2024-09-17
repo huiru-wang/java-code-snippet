@@ -1,8 +1,10 @@
 package com.xiaohan.demo.design.pattern.template.menu;
 
-import com.snippet.designpattern.template.CookTemplate;
+
+import com.xiaohan.demo.design.pattern.template.CookTemplate;
 
 public class KungPaoChicken extends CookTemplate {
+
     protected void prepareMaterials() {
         System.out.println("prepare chicken and pickled cucumber and carrot");
     }

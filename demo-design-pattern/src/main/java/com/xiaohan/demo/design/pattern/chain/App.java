@@ -1,8 +1,8 @@
 package com.xiaohan.demo.design.pattern.chain;
 
-import com.snippet.designpattern.chain.handlers.MessageConvertHandler;
-import com.snippet.designpattern.chain.handlers.MessagePreProcessHandler;
-import com.snippet.designpattern.chain.handlers.MessageResultHandler;
+import com.xiaohan.demo.design.pattern.chain.handlers.MessageConvertHandler;
+import com.xiaohan.demo.design.pattern.chain.handlers.MessagePreProcessHandler;
+import com.xiaohan.demo.design.pattern.chain.handlers.MessageResultHandler;
 
 import java.util.ArrayList;
 import java.util.Comparator;

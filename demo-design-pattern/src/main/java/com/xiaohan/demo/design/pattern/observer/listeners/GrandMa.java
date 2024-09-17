@@ -1,6 +1,7 @@
 package com.xiaohan.demo.design.pattern.observer.listeners;
 
-import com.snippet.designpattern.observer.WeatherListener;
+
+import com.xiaohan.demo.design.pattern.observer.WeatherListener;
 
 public class GrandMa implements WeatherListener {
 

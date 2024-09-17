@@ -1,8 +1,9 @@
 package com.xiaohan.demo.design.pattern.strategy;
 
-import com.snippet.designpattern.strategy.combination.ChannelPaymentCom;
-import com.snippet.designpattern.strategy.simple.ChannelPayment;
-import com.snippet.designpattern.strategy.simple.concrete.AdyenPayment;
+
+import com.xiaohan.demo.design.pattern.strategy.combination.ChannelPaymentCom;
+import com.xiaohan.demo.design.pattern.strategy.simple.ChannelPayment;
+import com.xiaohan.demo.design.pattern.strategy.simple.concrete.AdyenPayment;
 
 public class App {
     public static void main(String[] args) {

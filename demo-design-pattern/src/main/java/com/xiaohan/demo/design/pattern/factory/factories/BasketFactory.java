@@ -1,8 +1,9 @@
 package com.xiaohan.demo.design.pattern.factory.factories;
 
-import com.snippet.designpattern.factorymehtod.Ball;
-import com.snippet.designpattern.factorymehtod.BallFactory;
-import com.snippet.designpattern.factorymehtod.balls.BasketBall;
+
+import com.xiaohan.demo.design.pattern.factory.Ball;
+import com.xiaohan.demo.design.pattern.factory.BallFactory;
+import com.xiaohan.demo.design.pattern.factory.balls.BasketBall;
 
 /**
  * create by whr on 2023-07-06

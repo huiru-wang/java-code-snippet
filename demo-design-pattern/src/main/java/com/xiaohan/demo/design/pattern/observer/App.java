@@ -1,6 +1,7 @@
 package com.xiaohan.demo.design.pattern.observer;
 
-import com.snippet.designpattern.observer.listeners.GrandPa;
+
+import com.xiaohan.demo.design.pattern.observer.listeners.GrandPa;
 
 public class App {
 

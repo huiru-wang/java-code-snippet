@@ -1,7 +1,8 @@
 package com.xiaohan.demo.design.pattern.strategy.simple;
 
-import com.snippet.designpattern.strategy.Order;
-import com.snippet.designpattern.strategy.PaymentStrategy;
+
+import com.xiaohan.demo.design.pattern.strategy.Order;
+import com.xiaohan.demo.design.pattern.strategy.PaymentStrategy;
 
 public class ChannelPayment {
 
