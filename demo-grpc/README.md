@@ -18,16 +18,12 @@ protoc --go_out=./grpc-server-go/pkg --go_opt=paths=source_relative .\pb\*.proto
 protoc --go_out=./grpc-client --go_opt=paths=source_relative .\pb\*.proto
 
 # 生成go grpc server文件
-protoc --go-grpc_out=./demo-grpc-go/pkg --go-grpc_opt=paths=source_relative .\pb\*.proto
+protoc --go-grpc_out=./grpc-server-go/pkg --go-grpc_opt=paths=source_relative .\pb\*.proto
 protoc --go-grpc_out=./grpc-client --go-grpc_opt=paths=source_relative .\pb\*.proto
 ```
 - out路径默认生成pb文件夹
 - `--go_opt=paths=source_relative`：go_out参数使用相对路径
 
-编译多个proto文件
-```shell
-protoc --go_out=./demo-grpc-go/pkg --go_opt=paths=source_relative --go-grpc_out=./demo-grpc-go/pkg --go-grpc_opt=paths=source_relative .\pb\*.proto
-```
 
 ## 启动server
 

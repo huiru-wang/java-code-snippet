@@ -12,10 +12,10 @@ option go_package = "pb/";
 option java_multiple_files = true;
 option java_package = "com.xiaohan.demo.grpc.server.pb";
 
-package helloworld;
+package helloService;
 
 // rpc服务
-service HelloWorld {
+service HelloService {
     rpc sayHello (HelloRequest) returns (HelloResponse) {}
 }
 

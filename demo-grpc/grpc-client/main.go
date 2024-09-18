@@ -27,7 +27,7 @@ func main() {
 
 	defer conn.Close()
 
-	helloworldClient := pb.NewHelloWorldClient(conn)
+	helloworldClient := pb.NewHelloServiceClient(conn)
 	response, err := helloworldClient.SayHello(context.Background(), &pb.HelloRequest{Source: *name, Message: "go client message"})
 	if err != nil {
 		log.Printf("[ERROR] helloworld request fail: %v", err)

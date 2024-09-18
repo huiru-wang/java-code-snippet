@@ -8,7 +8,7 @@ import (
 )
 
 type HelloService struct {
-	pb.UnimplementedHelloWorldServer
+	pb.UnimplementedHelloServiceServer
 }
 
 func (helloService *HelloService) SayHello(ctx context.Context, helloRequest *pb.HelloRequest) (*pb.HelloResponse, error) {

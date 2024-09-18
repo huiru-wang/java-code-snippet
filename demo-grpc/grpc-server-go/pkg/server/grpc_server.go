@@ -28,6 +28,6 @@ func Init() {
 }
 
 func registerService(grpcServer *grpc.Server) {
-	pb.RegisterHelloWorldServer(grpcServer, &HelloService{})
+	pb.RegisterHelloServiceServer(grpcServer, &HelloService{})
 	pb.RegisterUserServiceServer(grpcServer, &UserService{})
 }
