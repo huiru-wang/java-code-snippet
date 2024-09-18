@@ -17,11 +17,14 @@ public class DemoDubboNativeApp {
     public static void main(String[] args) {
         String applicationName = "demo-dubbo-native-app";
         ProtocolConfig protocolConfig = new ProtocolConfig(CommonConstants.TRIPLE, 50051);
+        protocolConfig.setSerialization("protobuf");
         RegistryConfig registryConfig = new RegistryConfig("nacos://127.0.0.1:8848");
 
         ServiceConfig<DemoService> demoServiceConfig = new ServiceConfig<>();
         demoServiceConfig.setInterface(DemoService.class.getName());
         demoServiceConfig.setRef(new DemoServiceImpl());
+        demoServiceConfig.setVersion("1.0.0");
+        demoServiceConfig.setGroup("native-group");
 
         DubboBootstrap.getInstance()
                 .application(applicationName)
