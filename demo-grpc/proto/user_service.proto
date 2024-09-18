@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "pb/";
+
+package helloworld;
+
+// rpc服务
+service UserService {
+    rpc userInfo (UserInfoRequest) returns (UserInfo) {}
+}
+
+message UserInfoRequest {
+    string userId = 1;
+}
+
+// 消息定义
+message UserInfo {
+    string userId = 1;
+    string userName = 2;
+    uint32 age = 3;
+    repeated Address addresses = 4;
+    uint64 createdAt = 5;
+}
+
+message Address {
+    string street = 1;
+    string city = 2;
+}
