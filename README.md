@@ -13,7 +13,7 @@ Springboot-dubbo-nacos
 ## demo-spring-mvc
 SpringBoot-MVC-MybatisPlus
 - spring配置
-- Filer
+- Filter
 - Interceptor
 - Mybatis
 - 全局异常处理
