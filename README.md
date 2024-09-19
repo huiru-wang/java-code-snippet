@@ -18,5 +18,22 @@ SpringBoot-MVC-MybatisPlus
 - Mybatis
 - 全局异常处理
 
+## demo-spring-aop
+用例详见：test/
+- aop通知执行顺序
+- aop多个切面执行顺序
+
+![aop](./images/aop.png)
+
 ## demo-spring-transaction
 Spring事务相关
+
+## demo-spring-sentinel
+
+![sentinel-rule](./images/sentinel-rule.png)
+
+[sentinel-dashboard-release包下载地址](https://github.com/alibaba/Sentinel/releases)
+
+```shell
+java -jar sentinel-dashboard-1.8.6.jar -Dserver.port=8858 -Dcsp.sentinel.dashboard.server=localhost:8858 -Dproject.name=sentinel-dashboard
+```
