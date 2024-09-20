@@ -15,7 +15,7 @@ public class ExecutionInterceptor implements Ordered {
 
     private static final int ORDER = 1;
 
-    @Pointcut("execution(* com.xiaohan.demo.spring.aop.service.*.*(..))")
+    @Pointcut("execution(* com.xiaohan.demo.spring.aop.service.DemoService.doSomethingElse(..))")
     public void pointCut() {}
 
     @Before("pointCut()")
