@@ -68,6 +68,10 @@ public class RedisTemplateConfig {
         return new StringRedisSerializer();
     }
 
+    /**
+     * 以下的Bean声明，仅是将RedisTemplate下的各个数据结构的操作Bean取出来，方便使用
+     */
+
     @Bean
     public HashOperations<String, String, Object> hashOperations(StringRedisTemplate stringRedisTemplate) {
         return stringRedisTemplate.opsForHash();
